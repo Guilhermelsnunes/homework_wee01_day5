@@ -66,10 +66,10 @@ def customer_can_afford_pet(customer,new_pet):
 
 
 def sell_pet_to_customer(pet_shop,pet,customer):
-    if customer_can_afford_pet(customer,pet) == False:
+    if pet == None:
+        print("No pet at the store")
+    elif customer_can_afford_pet(customer,pet) == False:
         return "curtomer_can't_afford_pet"
-    elif pet==None:
-        return "No such pet at the store"
     else: 
         remove_customer_cash(customer,pet["price"])
         add_or_remove_cash(pet_shop,pet["price"])
