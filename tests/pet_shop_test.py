@@ -201,6 +201,14 @@ class TestPetShop(unittest.TestCase):
         self.assertEqual(1, get_pets_sold(self.cc_pet_shop))
         self.assertEqual(100, get_customer_cash(customer))
         self.assertEqual(1900, get_total_cash(self.cc_pet_shop))
+        
+        #Arthur not in cc_pet_shop
+        pet = find_pet_by_name(self.cc_pet_shop, "Arthur")
+        self.assertIsNone(pet)
+        
+        #Arthur in customers[0]["pets"]
+        pet = find_pet_by_name(customer, "Arthur")
+        self.assertEqual("Arthur", pet["name"])
 
     #@unittest.skip("delete this line to run the test")
     def test_sell_pet_to_customer__pet_not_found(self):
